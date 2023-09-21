@@ -16,14 +16,20 @@ public class Def {
 	WebDriver driver;
 
 	@Given("User launch Chrome Browser and enter URL {string}")
-	public void user_launch_chrome_browser_and_enter_url(String string) {
+	public void user_launch_chrome_browser_and_enter_url(String string) throws InterruptedException {
 		String URL = "https://www.makemytrip.com/flights/";
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(URL);
 		driver.navigate().refresh();
-
+		Thread.sleep(2000);
+		driver.navigate().refresh();
+		Thread.sleep(2000);
+		WebElement close = driver
+				.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/section/span"));
+		close.click();
+		
 	}
 
 	@Given("User clicks on Flights module and Select RoundTrip option")
@@ -81,7 +87,8 @@ public class Def {
 	}
 
 	@Then("Verify the Search page is displayed as expected")
-	public void verify_the_search_page_is_displayed_as_expected() {
+	public void verify_the_search_page_is_displayed_as_expected() throws InterruptedException {
+		Thread.sleep(5000);
 		
 
 		WebElement popup = driver.findElement(By.xpath("//*[@class='bgProperties icon20 overlayCrossIcon']"));
