@@ -22,23 +22,20 @@ public class Def {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(URL);
-		driver.navigate().refresh();
-		Thread.sleep(2000);
-		driver.navigate().refresh();
-		Thread.sleep(2000);
 		WebElement close = driver
 				.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/section/span"));
 		close.click();
+		Thread.sleep(3000);
 		
 	}
 
 	@Given("User clicks on Flights module and Select RoundTrip option")
 	public void user_clicks_on_flights_module_and_select_round_trip_option() throws InterruptedException {
 		WebElement Flight = driver
-				.findElement(By.xpath("//*[@class='chNavIcon appendBottom2 chSprite chFlights active']"));
+				.findElement(By.xpath("//span[@class='chNavIcon appendBottom2 chSprite chFlights active']"));
 		Flight.click();
 		Thread.sleep(5000);
-		WebElement RoundTrip = driver.findElement(By.xpath("//li[@data-cy='roundTrip']//span[@class='tabsCircle appendRight5']"));
+		WebElement RoundTrip = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[2]"));
 		RoundTrip.click();
 	}
 
